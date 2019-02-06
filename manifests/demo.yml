@@ -49,11 +49,22 @@ apiVersion: v1
 metadata:
   name: spinnaker-demo
   namespace: spinnah
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:iam::802476504392:server-certificate/star.1debit.com
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 spec:
   selector:
     source: demo
     app: spinnaker
+  type: LoadBalancer
+  loadBalancerSourceRanges:
+  - 10.70.0.0/16
+  - 10.120.0.0/16
+  - 96.78.187.189/29
+  - 98.248.138.51/32
   ports:
   - protocol: TCP
-    port: 80
+    port: 443
+    name: https
     targetPort: 8000
