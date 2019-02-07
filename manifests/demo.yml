@@ -55,7 +55,6 @@ spec:
     app: spinnaker
   type: LoadBalancer
   loadBalancerSourceRanges:
-  - 10.70.0.0/16
   - 10.120.0.0/16
   - 96.78.187.189/29
   #- 98.248.138.51/32
